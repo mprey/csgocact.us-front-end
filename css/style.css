@@ -299,12 +299,31 @@ main {
   min-height: 100%;
   background: #eeeff7;
   padding-top: 50px;
+  padding-bottom: 5px;
   z-index: 1;
 }
 
 @media only screen and (min-width: 955px) {
   main {
     padding-top: 80px;
+  }
+}
+
+/* --------------------------------
+
+footer
+
+-------------------------------- */
+footer {
+  height: 150px;
+  bottom: 0;
+  width: 100%;
+  background: #31353d;
+}
+
+@media only screen and (min-width: 955px) {
+  footer {
+    height: 250px;
   }
 }
 
