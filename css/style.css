@@ -561,6 +561,21 @@ chat stylign
   }
 }
 
+#chat-header {
+  height: 20px;
+  width: 100%;
+}
+
+#chat-exit {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+#chat-title {
+
+}
+
 #chat-trigger {
   position: fixed;
   bottom: 20px;

@@ -71,7 +71,12 @@ jQuery(document).ready(function($){
 	});
 
 	$(document).keyup(function(e) {
-  	if (e.keyCode === 27) $shadow_layer.click();
+  	if (e.keyCode === 13) { //enter key
+			//TODO add chat input sent
+		}
+  	if (e.keyCode === 27) { //esc key
+			$shadow_layer.click();
+		}
 	});
 
 	//move #main-navigation inside header on laptop
