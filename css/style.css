@@ -351,10 +351,48 @@ footer #logo-large {
   box-sizing: border-box;
 }
 
+footer #twitter-box {
+  float: left;
+  margin-left: 20px;
+  padding: 5px 5px 5px 5px;
+  background-color: #4099FF;
+}
+
+footer #media-icons {
+  float: right;
+  margin-right: 20px;
+  padding-top: 5px;
+}
+
+footer #twitter-box h2 {
+  float: left;
+  margin-right: 40px;
+  padding-left: 10px;
+}
+
+footer #twitter-box img:hover {
+  background-color: #2186fb;
+  border-radius: 2px;
+}
+
+footer #twitter-box img {
+  float: left;
+  padding-top: 4px;
+  padding-right: 10px;
+}
+
+footer .media-icon {
+  float: left;
+  margin-right: 10px;
+}
+
 footer #above-break {
   width: 100%;
   position: absolute;
-  bottom: 0;
+  bottom: 180px;
+  line-height: 30px;
+  text-align: center;
+  overflow: hidden;
 }
 
 footer #below-break {
@@ -396,10 +434,7 @@ footer #below-break {
 
 @media only screen and (max-width: 600px) { //for insanley small screens
   footer #below-break {
-    padding-bottom: 00px;
     line-height: 50px;
-    font-size: 5px;
-    font-style: italic;
   }
 
   footer #below-break li {
@@ -414,6 +449,10 @@ footer #below-break {
     height: 50px;
     width: 50px;
     margin-left: 10px;
+  }
+
+  footer.hr {
+    bottom: 50px;
   }
 }
 
@@ -469,19 +508,24 @@ media icons
 
 -------------------------------- */
 .media-icon {
-  width: 15px;
-  height: 15px;
+  width: 30px;
+  height: 30px;
   background-color: #25272b;
   border-radius: 10px;
-  -webkit-transition: border-radius;
-  -webkit-transition-duration: 2s;
-  -webkit-transition-delay: 1s;
-  -webkit-transition-timing-function: linear;
+  -moz-transition: all .2s;
+  -o-transition: all .2s;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+}
+
+.media-icon a {
+  text-decoration: none;
+  color: #eeeff7;
+  outline: none;
 }
 
 .media-icon:hover {
-  background: #F08080;
-  border-radius: 50%;
+  border-radius: 20px;
 }
 
 /* --------------------------------
@@ -489,6 +533,36 @@ media icons
 xkeyframes
 
 -------------------------------- */
+@keyframes pulse {
+	25% {
+		transform: scale(1.1);
+	}
+
+	75% {
+		transform: scale(.9);
+	}
+}
+
+@-webkit-keyframes pulse {
+  25% {
+		transform: scale(1.1);
+	}
+
+	75% {
+		transform: scale(.9);
+	}
+}
+
+@-moz-keyframes pulse {
+  25% {
+		transform: scale(1.1);
+	}
+
+	75% {
+		transform: scale(.9);
+	}
+}
+
 @-webkit-keyframes fade-in {
   0% {
     opacity: 0;
@@ -497,6 +571,7 @@ xkeyframes
     opacity: 1;
   }
 }
+
 @-moz-keyframes fade-in {
   0% {
     opacity: 0;
@@ -505,6 +580,7 @@ xkeyframes
     opacity: 1;
   }
 }
+
 @keyframes fade-in {
   0% {
     opacity: 0;
@@ -513,3 +589,5 @@ xkeyframes
     opacity: 1;
   }
 }
+
+//TODO - get rid of this
