@@ -243,7 +243,7 @@ main-nav
 
 /* --------------------------------
 
-content area
+user menu
 
 -------------------------------- */
 #user-menu {
@@ -500,6 +500,95 @@ shadow layer
   -webkit-animation: fade-in 0.3s;
   -moz-animation: fade-in 0.3s;
   animation: fade-in 0.3s;
+}
+
+/* --------------------------------
+
+chat stylign
+
+-------------------------------- */
+#chat-box{
+  position: fixed;
+  top: 0;
+  height: 100%;
+  width: 260px;
+  padding-top: 45px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  z-index: 3;
+
+  right: -100%;
+  background: #FFF;
+  -webkit-transition: right 0.3s;
+  -moz-transition: right 0.3s;
+  transition: right 0.3s;
+}
+
+/* resize the menu on a little larger screen */
+@media only screen and (min-width: 768px) {
+  #chat-box {
+    width: 350px;
+  }
+}
+
+@media only screen and (min-width: 955px) {
+  #chat-box {
+    width: 30%;
+    padding-top: 50px;
+  }
+}
+
+#chat-box.speed-in {
+  right: 0;
+}
+
+#chat-box > * {
+  padding: 0 1em;
+}
+
+#chat-box h2 {
+  font-size: 14px;
+  font-size: 0.875rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 1em 0;
+}
+
+@media only screen and (min-width: 955px) {
+  #chat-box > * {
+    padding: 0 2em;
+  }
+}
+
+#chat-trigger {
+  position: fixed;
+  bottom: 20px;
+  right: 15px;
+  height: 50px;
+  width: 50px;
+  background-color: #25272b;
+  line-height: 50px;
+  text-align: center;
+  font-size: 25px;
+  border-radius: 50px;
+  z-index: 1;
+}
+
+#chat-trigger .fa-comment-o {
+  color: #eeeff7;
+}
+
+.notification-counter {
+    position: absolute;
+    top: -2px;
+    left: 0px;
+
+    background-color: rgba(212, 19, 13, 1);
+    color: #fff;
+    border-radius: 3px;
+    padding: 1px 3px;
+    font: 10px Verdana;
 }
 
 /* --------------------------------
