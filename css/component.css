@@ -55,7 +55,7 @@ perspective effects (not including the modals and the overlay).
 	left: 0;
 	z-index: 1000;
 	opacity: 0;
-	background: rgba(143,27,15,0.8);
+	background: rgba(67, 87, 121, 0.4);
 	-webkit-transition: all 0.3s;
 	-moz-transition: all 0.3s;
 	transition: all 0.3s;
@@ -72,11 +72,46 @@ perspective effects (not including the modals and the overlay).
 
 /* Content styles */
 .md-content {
-	color: #fff;
-	background: #e74c3c;
+	color: #black;
+	background: white;
 	position: relative;
 	border-radius: 3px;
 	margin: 0 auto;
+}
+
+.md-content h2 {
+	margin: 0;
+	padding: 0.4em;
+	text-align: center;
+	font-weight: bold;
+	border-radius: 3px 3px 0 0;
+	background: white;
+}
+
+.md-content .md-exit {
+	position: absolute;
+	right: 3px;
+	top: 3px;
+	padding: 5px;
+	height: 25px;
+	width: 25px;
+	color: black;
+	border-radius: 50%;
+}
+
+.md-content #emotes-wrapper {
+	height: auto;
+	width: 100%;
+}
+
+.md-content #emote-wrapper {
+	position: relative;
+	width: 50px;
+	height: 50px;
+}
+
+.md-content .md-exit:hover {
+	background-color: #e0e6ef;
 }
 
 .md-content h3 {

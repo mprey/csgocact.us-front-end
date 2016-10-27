@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
+	<link href="https://fonts.googleapis.com/css?family=Bungee+Hairline|PT+Sans" rel="stylesheet">
 	<link rel="stylesheet" href="../css/reset.css">
 	<link rel="stylesheet" href="../css/style.css">
 	<link rel="stylesheet" href="../css/component.css">
@@ -89,7 +89,7 @@
 	<!-- slide out chat box -->
 	<div id="chat-box">
 		<div id="chat-header">
-			<h2 id="chat-title"><i class="fa fa-users" aria-hidden="true"></i>  Chat</h2>
+			<h2 id="chat-title"><i class="fa fa-users" aria-hidden="true"></i> Chat <span id="chat-online">32</span></h2>
 			<a id="chat-exit" href="#0"><img src="../img/cd-remove-item.svg"></img></a>
 		</div>
 		<div id="chat-wrapper">
@@ -98,7 +98,7 @@
 		<div id="chat-input">
 			<textarea maxlength="200" placeholder="Type Something..."></textarea>
 			<div id="chat-buttons">
-				<a id="chat-emotes" href="#" class="md-trigger" data-modal="modal-1"><i class="fa fa-smile-o" aria-hidden="true"></i></a>
+				<a id="chat-emotes" href="#" class="md-trigger" data-modal="modal-emotes"><i class="fa fa-smile-o" aria-hidden="true"></i></a>
 				<button id="chat-submit" type="submit">SEND</button>
 			</div>
 		</div>
@@ -111,17 +111,14 @@
 	</div>
 
 	<!-- modals -->
-	<div class="md-modal md-effect-1 md-no-overlay" id="modal-1">
+	<div class="md-modal md-effect-1" id="modal-emotes">
 		<div class="md-content">
-			<h3>Modal Dialog</h3>
-			<div>
-				<p>This is a modal window. You can do the following things with it:</p>
-				<ul>
-					<li><strong>Read:</strong> modal windows will probably tell you something important so don't forget to read what they say.</li>
-					<li><strong>Look:</strong> a modal window enjoys a certain kind of attention; just look at it and appreciate its presence.</li>
-					<li><strong>Close:</strong> click on the button below to close the modal.</li>
-				</ul>
-				<button class="md-close">Close me!</button>
+			<h2>Chat Emotes</h2>
+			<a class="md-exit md-close" href="#0"><img src="../img/cd-remove-item.svg"></img></a>
+			<div id="emotes-wrapper">
+				<div id="emote-wrapper">
+					<a href="#" class="tooltip" title="4Head"><img src="../img/emotes/4Head.png"></img></a>
+				</div>
 			</div>
 		</div>
 	</div>
