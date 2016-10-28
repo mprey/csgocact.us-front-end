@@ -9,28 +9,13 @@ jQuery(document).ready(function($) {
 		$notification_counter = $('.notification-counter'),
 		$chat_trigger = $('#chat-trigger-a'),
 		$lateral_chat_box = $('#chat-box'),
-		$chat_exit = $('#chat-exit'),
-		$chat_emotes = $('#chat-emotes');
-
-	$chat_emotes.on('click', function(event) {
-		event.preventDefault();
-
-		//TODO create emotes modal
-	});
+		$chat_exit = $('#chat-exit');
 
 	$chat_exit.on('click', function(event) {
 		event.preventDefault();
 
 		//emulate the shadow layer being clicked to exit cuz im lazy
 		$shadow_layer.click();
-	});
-
-	$chat_trigger.on('click', function(event) {
-		event.preventDefault();
-		var val = parseInt($notification_counter.text());
-    val++;
-
-    $notification_counter.css({opacity: 0}).text(val).css({top: '-10px'}).transition({top: '-2px', opacity: 1});
 	});
 
 	//open lateral menu on mobile
@@ -82,6 +67,7 @@ jQuery(document).ready(function($) {
 			});
 			$lateral_user_menu.removeClass('speed-in');
 			$menu_navigation.removeClass('speed-in');
+			//TODO refade the chat button back in?
 		}
 	});
 
