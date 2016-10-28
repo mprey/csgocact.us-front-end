@@ -42,6 +42,10 @@ perspective effects (not including the modals and the overlay).
 	transform: translateX(-50%) translateY(-50%);
 }
 
+#modal-emotes {
+	width: 390px;
+}
+
 .md-show {
 	visibility: visible;
 }
@@ -72,7 +76,6 @@ perspective effects (not including the modals and the overlay).
 
 /* Content styles */
 .md-content {
-	color: #black;
 	background: white;
 	position: relative;
 	border-radius: 3px;
@@ -100,14 +103,13 @@ perspective effects (not including the modals and the overlay).
 }
 
 .md-content #emotes-wrapper {
-	height: auto;
 	width: 100%;
 }
 
 .md-content #emote-wrapper {
-	position: relative;
-	width: 50px;
-	height: 50px;
+	display: inline-block;
+	width: 40px;
+	height: 40px;
 }
 
 .md-content .md-exit:hover {
