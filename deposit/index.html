@@ -4,9 +4,10 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
+	<link href="https://fonts.googleapis.com/css?family=Bungee+Hairline|PT+Sans" rel="stylesheet">
 	<link rel="stylesheet" href="../css/reset.css">
 	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="../css/component.css">
 
 	<title>Coinflip | csgocact.us</title>
 </head>
@@ -22,7 +23,7 @@
 		<ul>
 			<li><a href="../coinflip/index.html"><i class="fa fa-circle" aria-hidden="true"></i> Coinflip</a></li>
 			<li><a href="../roulette/index.html"><i class="fa fa-dot-circle-o" aria-hidden="true"></i> Roulette</a></li>
-			<li><a class="current" href="../deposit/index.html"><i class="fa fa-money" aria-hidden="true"></i>  Deposit</a></li>
+			<li><a class="deposit" href="../deposit/index.html"><i class="fa fa-money" aria-hidden="true"></i>  Deposit</a></li>
 			<li><a href="../withdraw/index.html"><i class="fa fa-shopping-cart" aria-hidden="true"></i>  Withdraw</a></li>
 			<li><a href="../support/index.html"><i class="fa fa-envelope-o" aria-hidden="true"></i>  Support</a></li>
 		</ul>
@@ -41,7 +42,7 @@
 			<!-- above the break -->
 			<div id="above-break">
 				<div id="twitter-box">
-					<h2>"csgocact.us is now live! enjoy! @csgo_cactus"</h2>
+					<h2>"csgocact.us is now live! enjoy! @csgocact"</h2>
 					<a href="http://twitter.com/csgo_cactus"><img src="../img/follow-twitter.png"></img></a>
 				</div>
 				<div id="media-icons">
@@ -49,7 +50,7 @@
 						<p><a href="http://facebook.com/csgocactus"><i class="fa fa-facebook"></i></a></p>
 					</div>
 					<div class="media-icon">
-						<p><a href="http://twitter.com/csgo_cactus"><i class="fa fa-twitter"></i></a></p>
+						<p><a href="http://twitter.com/csgocact"><i class="fa fa-twitter"></i></a></p>
 					</div>
 					<div class="media-icon">
 						<p><a href="http://steamcommunity.com/groups/csgocactus"><i class="fa fa-steam"></i></p>
@@ -76,14 +77,184 @@
 		</div>
 	</footer>
 
+	<!-- shadow layer for slide out menus -->
 	<div id="shadow-layer"></div>
+
+	<!-- slide out user menu -->
 	<div id="user-menu">
 		<h2>Username</h2>
 		<a href="#0" class="login-btn">Login</a>
 	</div>
 
+	<!-- slide out chat box -->
+	<div id="chat-box">
+		<div id="chat-header">
+			<h2 id="chat-title"><i class="fa fa-users" aria-hidden="true"></i> Chat <span id="chat-online">0</span></h2>
+			<a id="chat-exit" href="#0"><img src="../img/cd-remove-item.svg"></img></a>
+		</div>
+		<div id="chat-wrapper">
+			<hr class="chat-break">
+			<div class="chat-message clearfix">
+				<img class="chat-profile" src="../img/large-logo.png">
+				<div class="chat-message-content clearfix">
+					<span class="chat-time">13:38</span>
+					<h5>mprey</h5>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, explicabo quasi ratione odio dolorum harum.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, explicabo quasi ratione odio dolorum harum.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, explicabo quasi ratione odio dolorum harum.</p>
+				</div>
+			</div>
+			<hr class="chat-break">
+			<div class="chat-message clearfix">
+				<img class="chat-profile" src="../img/large-logo.png">
+				<div class="chat-message-content clearfix">
+					<span class="chat-time">13:38</span>
+					<h5>mprey</h5>
+					<p>Lorem ipsum</p>
+				</div>
+			</div>
+			<hr class="chat-break">
+			<div class="chat-message clearfix">
+				<img class="chat-profile" src="../img/large-logo.png">
+				<div class="chat-message-content clearfix">
+					<span class="chat-time">13:38</span>
+					<h5>mprey</h5>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, explicabo quasi ratione odio dolorum harum.</p>
+				</div>
+			</div>
+			<hr class="chat-break">
+			<div class="chat-message clearfix">
+				<img class="chat-profile" src="../img/large-logo.png">
+				<div class="chat-message-content clearfix">
+					<span class="chat-time">13:38</span>
+					<h5>mprey</h5>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, explicabo quasi ratione odio dolorum harum.</p>
+				</div>
+			</div>
+			<hr class="chat-break">
+			<div class="chat-message clearfix">
+				<img class="chat-profile" src="../img/large-logo.png">
+				<div class="chat-message-content clearfix">
+					<span class="chat-time">13:38</span>
+					<h5>mprey</h5>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, explicabo quasi ratione odio dolorum harum.</p>
+				</div>
+			</div>
+			<hr class="chat-break">
+			<div class="chat-message clearfix">
+				<img class="chat-profile" src="../img/large-logo.png">
+				<div class="chat-message-content clearfix">
+					<span class="chat-time">13:38</span>
+					<h5>mprey</h5>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, explicabo quasi ratione odio dolorum harum.</p>
+				</div>
+			</div>
+			<hr class="chat-break">
+			<div class="chat-message clearfix">
+				<img class="chat-profile" src="../img/large-logo.png">
+				<div class="chat-message-content clearfix">
+					<span class="chat-time">13:38</span>
+					<h5>mprey</h5>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, explicabo quasi ratione odio dolorum harum.</p>
+				</div>
+			</div>
+			<hr class="chat-break">
+		</div>
+		<div id="chat-input">
+			<textarea id="chat-textarea" maxlength="200" placeholder="Type Something..."></textarea>
+			<div id="chat-buttons">
+				<a id="chat-emotes" href="#" class="md-trigger" data-modal="modal-emotes"><i class="fa fa-smile-o" aria-hidden="true"></i></a>
+				<button id="chat-submit" type="submit">SEND</button>
+			</div>
+		</div>
+	</div>
+
+	<!-- chat box trigger -->
+	<div id="chat-trigger">
+		<a id="chat-trigger-a" href="#0"><i class="fa fa-comment-o" aria-hidden="true"></i></a>
+		<span class="notification-counter">1</span>
+	</div>
+
+	<!-- modals -->
+	<div class="md-modal md-effect-1" id="modal-emotes">
+		<div class="md-content">
+			<h2>Chat Emotes</h2>
+			<a class="md-exit md-close" href="#0"><img src="../img/cd-remove-item.svg"></img></a>
+			<div id="emotes-wrapper">
+				<div id="emote-wrapper">
+					<a href="#" class="tooltip"><img src="../img/emotes/4Head.png"><span>4Head</span></img></a>
+				</div>
+				<div id="emote-wrapper">
+					<a href="#" class="tooltip"><img src="../img/emotes/ANELE.png"><span>ANELE</span></img></a>
+				</div>
+				<div id="emote-wrapper">
+					<a href="#" class="tooltip"><img src="../img/emotes/BabyRage.png"><span>BabyRage</span></img></a>
+				</div>
+				<div id="emote-wrapper">
+					<a href="#" class="tooltip"><img src="../img/emotes/BibleThump.png"><span>BibleThump</span></img></a>
+				</div>
+				<div id="emote-wrapper">
+					<a href="#" class="tooltip"><img src="../img/emotes/BrokeBack.png"><span>BrokeBack</span></img></a>
+				</div>
+				<div id="emote-wrapper">
+					<a href="#" class="tooltip"><img src="../img/emotes/cmonBruh.png"><span>cmonBruh</span></img></a>
+				</div>
+				<div id="emote-wrapper">
+					<a href="#" class="tooltip"><img src="../img/emotes/CoolCat.png"><span>CoolCat</span></img></a>
+				</div>
+				<div id="emote-wrapper">
+					<a href="#" class="tooltip"><img src="../img/emotes/CorgiDerp.png"><span>CorgiDerp</span></img></a>
+				</div>
+				<div id="emote-wrapper">
+					<a href="#" class="tooltip"><img src="../img/emotes/EleGiggle.png"><span>EleGiggle</span></img></a>
+				</div>
+				<div id="emote-wrapper">
+					<a href="#" class="tooltip"><img src="../img/emotes/FailFish.png"><span>FailFish</span></img></a>
+				</div>
+				<div id="emote-wrapper">
+					<a href="#" class="tooltip"><img src="../img/emotes/FeelsBadMan.png"><span>FeelsBadMan</span></img></a>
+				</div>
+				<div id="emote-wrapper">
+					<a href="#" class="tooltip"><img src="../img/emotes/FeelsGoodMan.png"><span>FeelsGoodMan</span></img></a>
+				</div>
+				<div id="emote-wrapper">
+					<a href="#" class="tooltip"><img src="../img/emotes/Kappa.png"><span>Kappa</span></img></a>
+				</div>
+				<div id="emote-wrapper">
+					<a href="#" class="tooltip"><img src="../img/emotes/KappaPride.png"><span>KappaPride</span></img></a>
+				</div>
+				<div id="emote-wrapper">
+					<a href="#" class="tooltip"><img src="../img/emotes/Kreygasm.png"><span>Kreygasm</span></img></a>
+				</div>
+				<div id="emote-wrapper">
+					<a href="#" class="tooltip"><img src="../img/emotes/MrDestructoid.png"><span>MrDestructoid</span></img></a>
+				</div>
+				<div id="emote-wrapper">
+					<a href="#" class="tooltip"><img src="../img/emotes/OSfrog.png"><span>OSfrog</span></img></a>
+				</div>
+				<div id="emote-wrapper">
+					<a href="#" class="tooltip"><img src="../img/emotes/PogChamp.png"><span>PogChamp</span></img></a>
+				</div>
+				<div id="emote-wrapper">
+					<a href="#" class="tooltip"><img src="../img/emotes/SMOrc.png"><span>SMOrc</span></img></a>
+				</div>
+				<div id="emote-wrapper">
+					<a href="#" class="tooltip"><img src="../img/emotes/SwiftRage.png"><span>SwiftRage</span></img></a>
+				</div>
+				<div id="emote-wrapper">
+					<a href="#" class="tooltip"><img src="../img/emotes/WutFace.png"><span>WutFace</span></img></a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="md-overlay"></div>
+
+	<!-- classie.js by @desandro: https://github.com/desandro/classie -->
+	<script src="../js/classie.js"></script>
+	<script src="../js/modalEffects.js"></script>
 	<script src="https://use.fontawesome.com/78d8a1e558.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script src="../js/nav-controller.js"></script>
+	<script src="../js/nav_manager.js"></script>
+	<script src="../js/chat_manager.js"></script>
+	<script src="../js/jquery.transit.js"></script>
 </body>
 </html>

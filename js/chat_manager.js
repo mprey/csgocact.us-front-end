@@ -9,17 +9,59 @@ $(function() {
 
   var emotes = ['4Head', 'ANELE', 'BabyRage', 'BibleThump', 'BrokeBack', 'cmonBruh', 'CoolCat', 'CorgiDerp', 'EleGiggle', 'FailFish', 'FeelsBadMan', 'FeelsGoodMan', 'Kappa', 'KappaPride', 'Kreygasm', 'MrDestructoid', 'OSfrog', 'PogChamp', 'SMOrc', 'SwiftRage', 'WutFace'];
 
+  var socket_incoming = {
+    UPDATE_ONLINE: 'CHAT_IN_UPDATE_ONLINE',
+    INCREMENT_ONLINE: 'CHAT_IN_INCREMENET_ONLINE',
+    DECREMENT_ONLINE: 'CHAT_IN_DECREMENT_ONLINE',
+    MUTE_USER: 'CHAT_IN_MUTE_USER',
+    BAN_USER: 'CHAT_IN_BAN_USER',
+    RECEIVE_MESSAGE: 'CHAT_IN_RECEIVE_MESSAGE'
+  };
+
+  var socket_outgoing = {
+    SEND_CHAT: 'CHAT_OUT_SEND_MESSAGE',
+    MUTE_USER: 'CHAT_OUT_MUTE_USER',
+    BAN_USER: 'CHAT_OUT_BAN_USER'
+  };
+
   var chat_manager = new ChatManager();
 
-  function ChatManager() {
-    //TODO instantiate?
+  function ChatManager(socket) {
+    this.socket = socket;
+
+    if (this.socket == null) return;
+
+    this.socket.on(socket_incoming.UPDATE_ONLINE, this.updateOnline);
+    this.socket.on(socket_incoming.INCREMENT_ONLINE, this.incrementOnline);
+    this.socket.on(socket_incoming.DECREMENT_ONLINE, this.decrementOnline);
   }
+
+  ChatManager.prototype.sendSocketMessage = function(header, data) {
+    this.socket.emit(header, data);
+  };
+
+  ChatManager.prototype.incrementOnline = function() {
+    var current = parseInt($chat_online.text());
+    current++;
+    $chat_online.text(current);
+  };
+
+  ChatManager.prototype.updateOnline = function(amount) {
+    $chat_online.text(amount);
+  };
+
+  ChatManager.prototype.decrementOnline = function() {
+    var current = parseInt($chat_online.text());
+    current--;
+    $chat_online.text(current);
+  };
 
   ChatManager.prototype.sendBotChat = function(text) {
     var data = {
-      profile_img: '',
+      profile_img: '../img/chat-bot-profile.png',
       profile_name: 'Chat Bot',
-      text: text
+      text: text,
+      admin: true
     };
     this.sendChat(data);
   };
@@ -38,13 +80,13 @@ $(function() {
     }, 800);
   };
 
-  ChatManager.prototype.sendChat = function(data) { //data.profile_img, data.profile_name, data.text
+  ChatManager.prototype.sendChat = function(data) { //data.profile_img, data.profile_name, data.text, data.admin
     var date = new Date;
     var timeText = date.getHours() + ':' + date.getMinutes();
 
     var contentText = this.replaceWithEmotes(data.text);
 
-    var divText = '<div class="chat-message clearfix"><img class="chat-profile" src="' + data.profile_img + '"><div class="chat-message-content clearfix"><span class="chat-time">' + timeText + '</span><h5>' + data.profile_name + '</h5><p>' + contentText + '</p></div></div>'
+    var divText = '<div class="chat-message clearfix ' + (data.admin ? 'admin-message' : '') + '"><img class="chat-profile" src="' + data.profile_img + '"><div class="chat-message-content clearfix"><span class="chat-time">' + timeText + '</span><h5>' + data.profile_name + '</h5><p>' + contentText + '</p></div></div>'
     var hrBreak = '<hr class="chat-break">';
 
     $chat_wrapper.append(divText + hrBreak);
@@ -69,7 +111,6 @@ $(function() {
   };
 
   ChatManager.prototype.replaceWithEmotes = function(text) {
-    console.log(text);
     var newText = text;
     for (var index in emotes) {
       if (newText.indexOf(emotes[index]) >= 0) {
@@ -78,11 +119,6 @@ $(function() {
     }
     return newText;
   };
-
-  $chat_emote.on('click', function(event) {
-    event.preventDefault();
-    chat_manager.appendText($(this).children('span').text());
-  });
 
   chat_manager.sendChat({
     profile_img: '../img/large-logo.png',
