@@ -11,6 +11,7 @@
 	<link rel="stylesheet" href="../css/reset.css">
 	<link rel="stylesheet" href="../css/style.css">
 	<link rel="stylesheet" href="../css/component.css">
+	<link rel="stylesheet" href="../css/sweetalert.css">
 
 	<title>Coinflip | csgocact.us</title>
 </head>
@@ -87,22 +88,33 @@
 	<div id="user-menu">
 		<h2>User Profile</h2>
 		<ul class="user-menu-items">
-			<li class="menu-item">
-				<input class="toggle-box" id="settings" type="checkbox">
-				<label for="settings">Settings</label>
+			<li class="user-menu-item">
+				<input class="toggle-box" id="client-settings" type="checkbox">
+				<label for="client-settings" class="noselect">Client Settings</label>
 				<div class="sub-items-wrapper">
-					<ul class="sub-item">
-						<li id="volume">
-							<p>Volume:</p>
-							<input type="range" name="points" id="points" value="50" min="0" max="100">
+					<ul class="sub-items">
+						<li id="volume-setting" class="clearfix">
+							<p><i class="fa fa-volume-up" aria-hidden="true"></i> Volume:</p>
+							<input type="range" name="volume" id="volume-slider" value="50" min="0" max="100">
 						</li>
-					</ul>
-					<ul class="sub-item">
-						<li id="auto-scroll">
-							<p>Chat Auto-Scroll:</p>
-							<label class="switch">
-  							<input type="checkbox">
+						<li id="auto-scroll" class="clearfix">
+							<p><i class="fa fa-arrows" aria-hidden="true"></i> Chat Auto-Scroll:</p>
+							<label class="switch noselect">
+  							<input type="checkbox" id="scroll-checkbox">
   							<div class="slider round"></div>
+							</label>
+						</li>
+						<li id="message-ping" class="clearfix">
+							<p><i class="fa fa-music" aria-hidden="true"></i> Chat Message Ping:</p>
+							<label class="switch noselect">
+  							<input type="checkbox" id="ping-checkbox">
+  							<div class="slider round"></div>
+							</label>
+						</li>
+						<li id="language" class="clearfix">
+							<p><i class="fa fa-language" aria-hidden="true"></i> Language:</p>
+							<label class="noselect">
+  							<i class="fa fa-times-circle" aria-hidden="true"></i>
 							</label>
 						</li>
 					</ul>
@@ -211,12 +223,17 @@
 
 	<div class="md-overlay"></div>
 
-	<!-- classie.js by @desandro: https://github.com/desandro/classie -->
+	<!-- load libraries first -->
 	<script src="../js/classie.js"></script>
+	<script src="../js/cookies.min.js"></script>
+	<script src="../js/sweetalert.min.js"></script>
 	<script src="../js/modalEffects.js"></script>
+	<script src="../js/jquery.transit.js"></script>
+
+	<!-- load custom scripts -->
+	<script src="../js/settings.js"></script>
 	<script src="../js/nav_manager.js"></script>
 	<script src="../js/chat_manager.js"></script>
 	<script src="../js/emotes.js"></script>
-	<script src="../js/jquery.transit.js"></script>
 </body>
 </html>
