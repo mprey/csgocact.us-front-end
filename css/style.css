@@ -1,77 +1,118 @@
-/* --------------------------------
+/**
+* @file style.css
+* @author mprey
+*/
 
-primary style
+/**
+* @section primary styles
+*/
 
--------------------------------- */
+/**
+* Apply font-smoothing to all children
+*/
 html * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+/**
+* Include margin and padding in total width and height
+*/
 *, *:after, *:before {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
+/**
+* Default font and background styles
+*/
 body {
   font-size: 100%;
   font-family: "PT Sans", sans-serif;
   color: #31353d;
   background-color: #eeeff7;
 }
+
+/**
+* Default hide any overflow
+*/
 body.overflow-hidden {
   overflow: hidden;
 }
 
+/**
+* Default link styles
+*/
 a {
   color: #0B4F6C;
   text-decoration: none;
 }
 
+/**
+* Image width default values
+*/
 img {
   max-width: 100%;
 }
 
+/**
+* Replace text with a background image
+*/
 .img-replace {
-  /* replace text with a background-image */
   display: inline-block;
   overflow: hidden;
   text-indent: 100%;
   white-space: nowrap;
 }
 
-/* --------------------------------
+/**
+* @section slide-out menu triggers (user-trigger, hamburger-menu)
+*/
 
-hamburger menu and user menu
-
--------------------------------- */
-
+/**
+* Absolute position for trigger elements at the top of the page
+*/
 #user-trigger, #hamburger-menu {
   position: absolute;
   top: 0;
   height: 100%;
 }
 
+/**
+* Consistent link styling between the triggers
+*/
 #user-trigger a, #hamburger-menu a {
   width: 60px;
   height: 100%;
 }
 
+/**
+* Stick the hamburger-menu trigger to the left side of the screen
+*/
 #hamburger-menu {
   left: 0;
 }
 
+/**
+* Apply background image to the trigger
+*/
 #hamburger-menu a {
   background: #26292f url("../img/hamburger-menu.svg") no-repeat center center;
 }
 
 @media only screen and (min-width: 955px) {
+  /**
+  * Hide the hamburger-menu when the screen width is smaller than 955px
+  */
   #hamburger-menu {
     display: none;
   }
 }
 
+/**
+* Stick the user-trigger to the right side of the screen
+*/
 #user-trigger {
   right: 0;
 }
@@ -93,11 +134,9 @@ hamburger menu and user menu
   }
 }
 
-/* --------------------------------
-
-header
-
--------------------------------- */
+/**
+* @section pinned header at the top of page
+*/
 header {
   position: fixed;
   top: 0;
@@ -116,11 +155,10 @@ header {
   }
 }
 
-/* --------------------------------
+/**
+* @section pinned logo in the top-left
+*/
 
-logo (top left)
-
--------------------------------- */
 #logo {
   padding-top: 0px;
   height: 100%;
@@ -145,11 +183,10 @@ logo (top left)
   }
 }
 
-/* --------------------------------
+/**
+* @section main navigation styling
+*/
 
-main-nav
-
--------------------------------- */
 #main-nav, #user-menu {
   position: fixed;
   top: 0;
@@ -241,11 +278,10 @@ main-nav
   }
 }
 
-/* --------------------------------
+/**
+* @section slide out user-menu
+*/
 
-user menu
-
--------------------------------- */
 #user-menu {
   right: -100%;
   background: #FFF;
@@ -444,11 +480,9 @@ user menu
   content: "\f0d7";
 }
 
-/* --------------------------------
-
-content area
-
--------------------------------- */
+/**
+* @section main content area of the page
+*/
 main {
   position: relative;
   min-height: 100%;
@@ -464,11 +498,10 @@ main {
   }
 }
 
-/* --------------------------------
+/**
+* @section static footer at the bottom of page
+*/
 
-footer
-
--------------------------------- */
 footer {
   bottom: 0;
   width: 100%;
@@ -610,11 +643,9 @@ footer #below-break {
   }
 }
 
-/* --------------------------------
-
-fancy horizontal rules
-
--------------------------------- */
+/**
+* @section horizontal rules styling
+*/
 
 hr.fancy-line {
     border: 0;
@@ -632,11 +663,10 @@ hr#footer {
   margin-right: 20px;
 }
 
-/* --------------------------------
+/**
+* @section shadow-layer to provide background for modals
+*/
 
-shadow layer
-
--------------------------------- */
 #shadow-layer {
   position: fixed;
   min-height: 100%;
@@ -656,11 +686,10 @@ shadow layer
   animation: fade-in 0.3s;
 }
 
-/* --------------------------------
+/**
+* @section slider chat-box styling
+*/
 
-chat stylign
-
--------------------------------- */
 #chat-box {
   position: fixed;
   top: 45px;
@@ -899,6 +928,10 @@ chat stylign
   min-height: 1px;
 }
 
+/**
+* @section notification counters in a Facebook esque
+*/
+
 .notification-counter {
   position: absolute;
   top: -2px;
@@ -914,11 +947,10 @@ chat stylign
   display: none;
 }
 
-/* --------------------------------
+/**
+* @section media-icons for social links in the footer
+*/
 
-media icons
-
--------------------------------- */
 .media-icon {
   width: 30px;
   height: 30px;
@@ -940,13 +972,13 @@ media icons
   border-radius: 20px;
 }
 
-/* --------------------------------
+/**
+* @section iOS-like sliders for toggle on and off
+*/
 
-switch sliders
-
--------------------------------- */
-
-/* The switch - the box around the slider */
+/**
+* The background box around the slider
+*/
 .switch {
   position: relative;
   display: inline-block;
@@ -954,10 +986,14 @@ switch sliders
   height: 17px;
 }
 
-/* Hide default HTML checkbox */
+/**
+* Hide the default HTML checkbox
+*/
 .switch input {display:none;}
 
-/* The slider */
+/**
+* The slider styling that the user clicks back and forth
+*/
 .slider {
   position: absolute;
   cursor: pointer;
@@ -1005,16 +1041,21 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
-/* --------------------------------
+/**
+* @section utility classes
+*/
 
-tooltips
-
--------------------------------- */
+/**
+* Tooltip class allows styled tooltips BELOW the element
+*/
 .tooltip {
   position: relative;
   display: inline;
 }
 
+/**
+* Background display of the tooltip
+*/
 .tooltip span {
   position: absolute;
   width: 70px;
@@ -1028,6 +1069,9 @@ tooltips
   border-radius: 6px;
 }
 
+/**
+* Carrot for the tooltip
+*/
 .tooltip span:after {
   content: '';
   position: absolute;
@@ -1039,6 +1083,10 @@ tooltips
   border-right: 8px solid transparent;
   border-left: 8px solid transparent;
 }
+
+/**
+* Tooltip trigger to display
+*/
 a:hover.tooltip span {
   visibility: visible;
   opacity: 0.8;
@@ -1048,10 +1096,12 @@ a:hover.tooltip span {
   z-index: 999;
 }
 
+/**
+* Clearfix class allows floated elements to be non-collapsable
+*/
 .clearfix {
   zoom: 1;
-} /* For IE 6/7 */
-
+}
 .clearfix:before, .clearfix:after {
     content: "";
     display: table;
@@ -1060,20 +1110,25 @@ a:hover.tooltip span {
   clear: both;
 }
 
+/**
+* Allows elements to disable highlighting (for drop down menus and such)
+*/
 .noselect {
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none;   /* Chrome/Safari/Opera */
   -khtml-user-select: none;    /* Konqueror */
   -moz-user-select: none;      /* Firefox */
   -ms-user-select: none;       /* Internet Explorer/Edge */
-  user-select: none;           /* Non-prefixed version, currently                                  not supported by any browser */
+  user-select: none;           /* Non-prefixed version, currently not supported by any browser */
 }
 
-/* --------------------------------
+/**
+* @section keyframes
+*/
 
-xkeyframes
-
--------------------------------- */
+/**
+* Pulse keyframe scales the object in a quick succession
+*/
 @keyframes pulse {
 	25% {
 		transform: scale(1.1);
@@ -1104,48 +1159,9 @@ xkeyframes
 	}
 }
 
-@keyframes show {
-  0% {
-    display: none;
-    opacity: 0;
-  }
-  1% {
-    display: block;
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@-moz-keyframes show {
-  0% {
-    display: none;
-    opacity: 0;
-  }
-  1% {
-    display: block;
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@-webkit-keyframes show {
-  0% {
-    display: none;
-    opacity: 0;
-  }
-  1% {
-    display: block;
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
+/**
+* Fade-in keyframe changes the element's opacity
+*/
 @-webkit-keyframes fade-in {
   0% {
     opacity: 0;
