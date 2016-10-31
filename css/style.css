@@ -885,8 +885,29 @@ hr#footer {
   height: auto;
 }
 
-.admin-message {
-  background-color: #f9fafb;
+span.rank {
+  text-transform: uppercase;
+  font-weight: BOLD;
+  padding: 2px 3px;
+  border-radius: 5px;
+  color: #FFF;
+  text-align: center;
+}
+
+span.admin {
+  background-color: rgb(189, 73, 73);
+}
+
+span.mod {
+  background-color: rgb(35, 104, 156);
+}
+
+span.bot {
+  background-color: rgb(86, 200, 215);
+}
+
+span:empty {
+  display: none;
 }
 
 .chat-message p {

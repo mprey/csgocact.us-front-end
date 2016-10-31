@@ -9,6 +9,13 @@ $(function() {
 
   var emotes = ['4Head', 'ANELE', 'BabyRage', 'BibleThump', 'BrokeBack', 'cmonBruh', 'CoolCat', 'CorgiDerp', 'EleGiggle', 'FailFish', 'FeelsBadMan', 'FeelsGoodMan', 'Kappa', 'KappaPride', 'Kreygasm', 'MrDestructoid', 'OSfrog', 'PogChamp', 'SMOrc', 'SwiftRage', 'WutFace'];
 
+  const RANKS = {
+    NORMAL: 0,
+    MODERATOR: 1,
+    ADMIN: 2,
+    BOT: 3
+  };
+
   var socket_incoming = {
     UPDATE_ONLINE: 'CHAT_IN_UPDATE_ONLINE',
     INCREMENT_ONLINE: 'CHAT_IN_INCREMENET_ONLINE',
@@ -36,10 +43,6 @@ $(function() {
     this.socket.on(socket_incoming.DECREMENT_ONLINE, this.decrementOnline);
   }
 
-  ChatManager.prototype.sendSocketMessage = function(header, data) {
-    this.socket.emit(header, data);
-  };
-
   ChatManager.prototype.incrementOnline = function() {
     var current = parseInt($chat_online.text());
     current++;
@@ -61,7 +64,7 @@ $(function() {
       profile_img: '../img/chat-bot-profile.png',
       profile_name: 'Chat Bot',
       text: text,
-      admin: true
+      rank: RANKS.BOT
     };
     this.sendChat(data);
   };
@@ -80,13 +83,20 @@ $(function() {
     }, 800);
   };
 
-  ChatManager.prototype.sendChat = function(data) { //data.profile_img, data.profile_name, data.text, data.admin
+  ChatManager.prototype.sendChat = function(data) { //data.profile_img, data.profile_name, data.text, data.rank
     var date = new Date;
     var timeText = date.getHours() + ':' + date.getMinutes();
 
     var contentText = this.replaceWithEmotes(data.text);
 
-    var divText = '<div class="chat-message clearfix ' + (data.admin ? 'admin-message' : '') + '"><img class="chat-profile" src="' + data.profile_img + '"><div class="chat-message-content clearfix"><span class="chat-time">' + timeText + '</span><h5>' + data.profile_name + '</h5><p>' + contentText + '</p></div></div>'
+    var rankText = '';
+
+    if (data.rank > 0) {
+      var className = data.rank == RANKS.ADMIN ? 'admin' : (data.rank == RANKS.BOT ? 'bot' : 'mod');
+      rankText = '<span class="rank ' + className + '">' + className + '</span>';
+    }
+
+    var divText = '<div class="chat-message clearfix"><img class="chat-profile" src="' + data.profile_img + '"><div class="chat-message-content clearfix"><span class="chat-time">' + timeText + '</span><h5>' + rankText + ' ' + data.profile_name + '</h5><p>' + contentText + '</p></div></div>'
     var hrBreak = '<hr class="chat-break">';
 
     $chat_wrapper.append(divText + hrBreak);
@@ -123,7 +133,22 @@ $(function() {
   chat_manager.sendChat({
     profile_img: '../img/large-logo.png',
     profile_name: 'mprey',
-    text: 'HELLO HOW ARE YOU BOYS DOING Kappa FailFish DERPP RPEP SMOrc WOOOHOOO FeelsBadMan YEAHHHHHHH FeelsGoodMan'
+    text: 'MrDestructoid phantom lord viewer MrDestructoid',
+    rank: RANKS.BOT
+  });
+
+  chat_manager.sendChat({
+    profile_img: '../img/large-logo.png',
+    profile_name: 'mprey',
+    text: 'i gonna /ban u Kappa',
+    rank: RANKS.ADMIN
+  });
+
+  chat_manager.sendChat({
+    profile_img: '../img/large-logo.png',
+    profile_name: 'mprey',
+    text: 'hello I am a moderator 4Head',
+    rank: RANKS.MODERATOR
   });
 
   window.chat_manager = chat_manager;
