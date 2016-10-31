@@ -31,9 +31,9 @@ $(function() {
   };
 
   Settings.prototype.loadLocalData = function() {
-    $volume_slider.val(values["csgocactus_volume_value"]);
-    $scroll_checkbox.prop('checked', (values["csgocactus_autoscroll_value"] == 1 ? true : false));
-    $ping_checkbox.prop('checked', (values["csgocactus_message_ping_value"] == 1 ? true : false));
+    $volume_slider.val(values["volume_value"]);
+    $scroll_checkbox.prop('checked', (values["autoscroll_value"] == 1 ? true : false));
+    $ping_checkbox.prop('checked', (values["message_ping_value"] == 1 ? true : false));
   };
 
   Settings.prototype.save = function(type) {
@@ -42,11 +42,11 @@ $(function() {
         Cookies.set(key, values[key]);
       }
       swal("Settings Saved", "Your settings for your client-side preferences have been saved successfully to your browser.", "success");
+      setTimeout(function() {
+        window.location.reload();
+      }, 2000);
     }
-  };
-
-  Settings.prototype.load = function(type) {
-
+    console.log(Cookies.get("volume_value"));
   };
 
   $client_settings_save.on('click', function(event) {
