@@ -9,7 +9,7 @@ $(function() {
 
   var emotes = ['4Head', 'ANELE', 'BabyRage', 'BibleThump', 'BrokeBack', 'cmonBruh', 'CoolCat', 'CorgiDerp', 'EleGiggle', 'FailFish', 'FeelsBadMan', 'FeelsGoodMan', 'Kappa', 'KappaPride', 'Kreygasm', 'MrDestructoid', 'OSfrog', 'PogChamp', 'SMOrc', 'SwiftRage', 'WutFace'];
 
-  const RANKS = {
+  var ranks = {
     NORMAL: 0,
     MODERATOR: 1,
     ADMIN: 2,
@@ -64,7 +64,7 @@ $(function() {
       profile_img: '../img/chat-bot-profile.png',
       profile_name: 'Chat Bot',
       text: text,
-      rank: RANKS.BOT
+      rank: ranks.BOT
     };
     this.sendChat(data);
   };
@@ -92,7 +92,7 @@ $(function() {
     var rankText = '';
 
     if (data.rank > 0) {
-      var className = data.rank == RANKS.ADMIN ? 'admin' : (data.rank == RANKS.BOT ? 'bot' : 'mod');
+      var className = data.rank == ranks.ADMIN ? 'admin' : (data.rank == ranks.BOT ? 'bot' : 'mod');
       rankText = '<span class="rank ' + className + '">' + className + '</span>';
     }
 
@@ -124,31 +124,39 @@ $(function() {
     var newText = text;
     for (var index in emotes) {
       if (newText.indexOf(emotes[index]) >= 0) {
-        newText = newText.replace(emotes[index], '<img class="chat-emote" src="../img/emotes/' + emotes[index] + '.png">');
+        newText = newText.split(emotes[index]).join('<img class="chat-emote" src="../img/emotes/' + emotes[index] + '.png">');
       }
     }
+    console.log(newText);
     return newText;
   };
 
   chat_manager.sendChat({
     profile_img: '../img/large-logo.png',
     profile_name: 'mprey',
-    text: 'MrDestructoid phantom lord viewer MrDestructoid',
-    rank: RANKS.BOT
+    text: 'MrDestructoid phantom lord viewer MrDestructoid ',
+    rank: ranks.BOT
   });
 
   chat_manager.sendChat({
     profile_img: '../img/large-logo.png',
     profile_name: 'mprey',
     text: 'i gonna /ban u Kappa',
-    rank: RANKS.ADMIN
+    rank: ranks.ADMIN
   });
 
   chat_manager.sendChat({
     profile_img: '../img/large-logo.png',
     profile_name: 'mprey',
-    text: 'hello I am a moderator 4Head',
-    rank: RANKS.MODERATOR
+    text: 'hello I am a moderator 4Head hello I am a moderator 4Head hello I am a moderator 4Head hello I am a moderator 4Head',
+    rank: ranks.MODERATOR
+  });
+
+  chat_manager.sendChat({
+    profile_img: '../img/large-logo.png',
+    profile_name: 'mprey',
+    text: 'hello I am a moderator 4Head hello I am a moderator 4Head hello I am a moderator 4Head hello I am a moderator 4Head',
+    rank: ranks.NORMAL
   });
 
   window.chat_manager = chat_manager;
