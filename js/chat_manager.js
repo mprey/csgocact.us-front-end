@@ -61,6 +61,7 @@ $(function() {
 
   ChatManager.prototype.sendBotChat = function(text) {
     var data = {
+      id: 'CHAT_BOT',
       profile_img: '../img/chat-bot-profile.png',
       profile_name: 'Chat Bot',
       text: text,
@@ -74,7 +75,9 @@ $(function() {
   };
 
   ChatManager.prototype.removeMessages = function(id) {
-
+    $('.chat-message[chat-id="' + id + '"]').each(function() {
+      $(this).remove();
+    });
   };
 
   ChatManager.prototype.scrollToBottom = function() {
@@ -83,7 +86,7 @@ $(function() {
     }, 800);
   };
 
-  ChatManager.prototype.sendChat = function(data) { //data.profile_img, data.profile_name, data.text, data.rank
+  ChatManager.prototype.sendChat = function(data) { //data.id, data.profile_img, data.profile_name, data.text, data.rank
     var date = new Date;
     var timeText = date.getHours() + ':' + date.getMinutes();
 
@@ -96,7 +99,7 @@ $(function() {
       rankText = '<span class="rank ' + className + '">' + className + '</span>';
     }
 
-    var divText = '<div class="chat-message clearfix"><img class="chat-profile" src="' + data.profile_img + '"><div class="chat-message-content clearfix"><span class="chat-time">' + timeText + '</span><h5>' + rankText + ' ' + data.profile_name + '</h5><p>' + contentText + '</p></div></div>'
+    var divText = '<div class="chat-message clearfix" chat-id="' + data.id + '"><img class="chat-profile" src="' + data.profile_img + '"><div class="chat-message-content clearfix"><span class="chat-time">' + timeText + '</span><h5>' + rankText + ' ' + data.profile_name + '</h5><p>' + contentText + '</p></div></div>'
     var hrBreak = '<hr class="chat-break">';
 
     $chat_wrapper.append(divText + hrBreak);
@@ -127,11 +130,11 @@ $(function() {
         newText = newText.split(emotes[index]).join('<img class="chat-emote" src="../img/emotes/' + emotes[index] + '.png">');
       }
     }
-    console.log(newText);
     return newText;
   };
 
   chat_manager.sendChat({
+    id: '55555',
     profile_img: '../img/large-logo.png',
     profile_name: 'mprey',
     text: 'MrDestructoid phantom lord viewer MrDestructoid ',
@@ -139,6 +142,7 @@ $(function() {
   });
 
   chat_manager.sendChat({
+    id: '55555',
     profile_img: '../img/large-logo.png',
     profile_name: 'mprey',
     text: 'i gonna /ban u Kappa',
@@ -146,6 +150,7 @@ $(function() {
   });
 
   chat_manager.sendChat({
+    id: '55555',
     profile_img: '../img/large-logo.png',
     profile_name: 'mprey',
     text: 'hello I am a moderator 4Head hello I am a moderator 4Head hello I am a moderator 4Head hello I am a moderator 4Head',
@@ -153,6 +158,7 @@ $(function() {
   });
 
   chat_manager.sendChat({
+    id: '55555',
     profile_img: '../img/large-logo.png',
     profile_name: 'mprey',
     text: 'hello I am a moderator 4Head hello I am a moderator 4Head hello I am a moderator 4Head hello I am a moderator 4Head',
@@ -160,5 +166,4 @@ $(function() {
   });
 
   window.chat_manager = chat_manager;
-
 });
