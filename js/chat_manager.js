@@ -11,9 +11,10 @@ $(function() {
 
   var ranks = {
     NORMAL: 0,
-    MODERATOR: 1,
+    MOD: 1,
     ADMIN: 2,
-    BOT: 3
+    DEVELOPER: 3,
+    BOT: 4
   };
 
   var socket_incoming = {
@@ -172,8 +173,8 @@ $(function() {
     var rankText = '';
 
     if (data.rank > 0) {
-      var className = data.rank == ranks.ADMIN ? 'admin' : (data.rank == ranks.BOT ? 'bot' : 'mod');
-      rankText = '<span class="rank ' + className + '">' + className + '</span>';
+      var rank = this.getRank(data.rank).toLowerCase();
+      rankText = '<span class="rank ' + rank + '">' + rank + '</span>';
     }
 
     var divText = '<div class="chat-message clearfix" chat-id="' + data.id + '"><img class="chat-profile" src="' + data.profile_img + '"><div class="chat-message-content clearfix"><span class="chat-time">' + timeText + '</span><h5>' + rankText + ' ' + data.profile_name + '</h5><p>' + contentText + '</p></div></div>'
@@ -210,6 +211,14 @@ $(function() {
     return newText;
   };
 
+  ChatManager.prototype.getRank = function(value) {
+    for (var key in ranks) {
+      if (ranks[key] == value) {
+        return key;
+      }
+    }
+  };
+
   ChatManager.prototype.reloadPage = function() {
     this.addBotMessage({
       text: 'Window is now reloading...'
@@ -240,7 +249,7 @@ $(function() {
     profile_img: '../img/large-logo.png',
     profile_name: 'mprey',
     text: 'hello I am a moderator 4Head hello I am a moderator 4Head hello I am a moderator 4Head hello I am a moderator 4Head',
-    rank: ranks.MODERATOR
+    rank: ranks.MOD
   });
 
   chat_manager.addChatMessage({
@@ -249,6 +258,14 @@ $(function() {
     profile_name: 'mprey',
     text: 'hello I am a moderator 4Head hello I am a moderator 4Head hello I am a moderator 4Head hello I am a moderator 4Head',
     rank: ranks.NORMAL
+  });
+
+  chat_manager.addChatMessage({
+    id: '55555',
+    profile_img: '../img/large-logo.png',
+    profile_name: 'mprey',
+    text: 'im the coder now ANELE',
+    rank: ranks.DEVELOPER
   });
 
   window.chat_manager = chat_manager;

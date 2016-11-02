@@ -442,8 +442,7 @@ header {
 main {
     position: relative;
     min-height: 100%;
-    /*background: #eeeff7;*/
-    background: red;
+    background: #435779;
     padding-top: 50px;
     padding-bottom: 5px;
     z-index: 1;
@@ -453,18 +452,32 @@ main {
         padding-top: 55px;
     }
 }
-main > div {
+.coinflip-div {
   background: #eeeff7;
   border-radius: 10px;
+  margin: 1em;
+}
+#coinlfip-flexbox {
+  display: flex;
+  height: 900px;
+  flex-flow: column;
+  flex-wrap: wrap;
+  align-content: flex-start;
 }
 #coinflip-header {
-  height: 1000px;
+  height: 120px;
   width: calc(100% - 2em);
-  margin-left: 1em;
-  margin-right: 1em;
 }
 #coinflip-games {
-
+  width: 50%;
+  height: 500px;
+}
+#coinflip-history {
+  height: 10px;
+  width: 30%;
+}
+#coinflip-halloffame {
+  width: 30%;
 }
 /**
 * @section static footer at the bottom of page
@@ -820,6 +833,9 @@ span.admin {
 }
 span.mod {
     background-color: rgb(35, 104, 156);
+}
+span.developer {
+  background-color: rgb(147, 19, 138);
 }
 span.bot {
     background-color: rgb(86, 200, 215);
