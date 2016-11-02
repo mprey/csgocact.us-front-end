@@ -9,8 +9,8 @@ $(function() {
 
   var values = {
     "volume_value": 50,
-    "autoscroll_value": 0,
-    "message_ping_value": 0
+    "autoscroll_value": 1,
+    "message_ping_value": 1
   };
 
   function Settings() {
@@ -36,8 +36,15 @@ $(function() {
     $ping_checkbox.prop('checked', (values["message_ping_value"] == 1 ? true : false));
   };
 
+  Settings.prototype.updateClientSettings = function() {
+    values["volume_value"] = $volume_slider.val();
+    values["autoscroll_value"] = $scroll_checkbox.prop('checked') ? 1 : 0;
+    values["message_ping_value"] = $ping_checkbox.prop('checked') ? 1 : 0;
+  };
+
   Settings.prototype.save = function(type) {
     if (type == this.type.CLIENT) {
+      this.updateClientSettings();
       for (key in values) {
         Cookies.set(key, values[key]);
       }
@@ -46,8 +53,19 @@ $(function() {
         window.location.reload();
       }, 2000);
     }
-    console.log(Cookies.get("volume_value"));
   };
+
+  Settings.prototype.scrollToBottom = function() {
+    return values["autoscroll_value"] == 1;
+  };
+
+  Settings.prototype.messagePing = function() {
+    return values["messagePing"] == 1;
+  };
+
+  Settings.prototype.getVolumeValue = function() {
+    return values["volume_value"];
+  }
 
   $client_settings_save.on('click', function(event) {
     event.preventDefault();

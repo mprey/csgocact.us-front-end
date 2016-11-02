@@ -810,7 +810,7 @@ hr#footer {
 span.rank {
     text-transform: uppercase;
     font-weight: BOLD;
-    padding: 2px 3px;
+    padding: 1px 3px;
     border-radius: 5px;
     color: #FFF;
     text-align: center;
@@ -831,6 +831,9 @@ span:empty {
     margin: 0;
     font-size: 12px;
     margin-top: 3px;
+}
+.chat-message strong {
+  font-weight: bold;
 }
 .chat-profile {
     border-radius: 50%;
