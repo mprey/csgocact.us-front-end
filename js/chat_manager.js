@@ -50,10 +50,10 @@ $(function() {
     MUTE: '/mute [id] [reason] (duration)',
     UNBAN: '/unban [id]',
     UNMUTE: '/unmute [id]',
-    RELOAD_PAGE: '/reload',
-    CLEAR_CHAT: '/clear',
-    BOT_MESSAGE: '/bot send [message]',
-    CHAT_MODE: '/mode [normal:staff]',
+    RELOAD: '/reload',
+    CLEAR: '/clear',
+    BOT: '/bot send [message]',
+    MODE: '/mode [normal:staff]',
     PROMOTE: '/promote [id] [moderator:admin]',
     DEMOTE: '/demote [id]'
   };
@@ -127,12 +127,91 @@ $(function() {
     $chat_online.text(current);
   };
 
-  ChatManager.prototype.queryMessage = function(text) {
+  ChatManager.prototype.queryMessage = function(text) { //before sent to socket
+    if (!text || text.length == 0) return;
 
+    $chat_textarea.val('');
+
+    if (text.substring(0, 1) == '/') {
+      this.handleCommand(text);
+      return;
+    }
+
+    this.socket.emit(socket_outgoing.SEND_CHAT, {
+      text: text
+    });
   };
 
-  ChatManager.prototype.handleCommand = function(text) {
+  ChatManager.prototype.handleCommand = function(text) { //before sent to socket
+    var commandQuery = text.substring(1);
 
+    var args = commandQuery.split(" ");
+
+    if (args[0].toLowerCase() == 'help') {
+      this.sendHelpMessage();
+    } else if (args[0].toLowerCase() == 'ban') {
+      if (args.length == 3 || args.length == 4) {
+        //TODO
+      }
+      this.sendHelpMessage('ban');
+    } else if (args[0].toLowerCase() == 'mute') {
+      if (args.length == 3 || args.length == 4) {
+        //TODO
+      }
+      this.sendHelpMessage('mute');
+    } else if (args[0].toLowerCase() == 'unban') {
+      if (args.length == 2) {
+        //TODO
+      }
+      this.sendHelpMessage('unban');
+    } else if (args[0].toLowerCase() == 'unmute') {
+      if (args.length == 2) {
+        //TODO
+      }
+      this.sendHelpMessage('unmute');
+    } else if (args[0].toLowerCase() == 'reload') {
+      this.socket.emit(socket_outgoing.RELOAD_PAGE, {});
+    } else if (args[0].toLowerCase() == 'clear') {
+      this.socket.emit(socket_outgoing.CLEAR_CHAT, {});
+    } else if (args[0].toLowerCase() == 'bot') {
+      if (args.length > 2 && args[1].toLowerCase() == 'send') {
+        //TODO parse args from index 2->indefinite into bot message string
+      }
+      this.sendHelpMessage('bot');
+    } else if (args[0].toLowerCase() == 'mode') {
+      if (args.length == 2) {
+        //TODO
+      }
+      this.sendHelpMessage('mode');
+    } else if (args[0].toLowerCase() == 'promote') {
+      if (args.lenth == 3) {
+        //TODO
+      }
+      this.sendHelpMessage('promote');
+    } else if (args[0].toLowerCase() == 'demote') {
+      if (args.length == 2) {
+        //TODO
+      }
+      this.sendHelpMessage('demote');
+    } else {
+      this.sendHelpMessage();
+    }
+  };
+
+  ChatManager.prototype.sendHelpMessage = function(command) {
+    var text = '';
+    if (command) {
+      text += 'Command usage:';
+      text += '<br>' + commands[command.toUpperCase()];
+    } else {
+      text += 'Available commands:';
+      for (var command in commands) {
+        text += "<br>- " + commands[command];
+      }
+    }
+    this.addBotMessage({
+      text: text
+    });
   };
 
   ChatManager.prototype.addBotMessage = function(data) {
@@ -227,6 +306,25 @@ $(function() {
       location.reload();
     }, 2000);
   };
+
+  $chat_submit.on('click', function(event) {
+    event.preventDefault();
+    chat_manager.queryMessage($chat_textarea.val());
+  });
+
+  $chat_textarea.keypress(function(event) {
+    if (event.which == 13) {
+      event.preventDefault();
+      chat_manager.queryMessage($chat_textarea.val());
+    }
+  });
+
+  $(document).keypress(function(event) {
+    if (event.which == 13 && isChatOpen) {
+      event.preventDefault();
+      chat_manager.queryMessage($chat_textarea.val());
+    }
+  });
 
   chat_manager.addChatMessage({
     id: '55555',

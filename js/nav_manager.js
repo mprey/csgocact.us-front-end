@@ -11,6 +11,8 @@ jQuery(document).ready(function($) {
 		$lateral_chat_box = $('#chat-box'),
 		$chat_exit = $('#chat-exit');
 
+	var isChatOpen = false;
+
 	$chat_exit.on('click', function(event) {
 		event.preventDefault();
 
@@ -38,6 +40,7 @@ jQuery(document).ready(function($) {
 
 	$chat_trigger.on('click', function(event) {
 		event.preventDefault();
+		isChatOpen = true;
 
 		//close all lateral menus
 		$lateral_user_menu.removeClass('speed-in');
@@ -67,14 +70,11 @@ jQuery(document).ready(function($) {
 			});
 			$lateral_user_menu.removeClass('speed-in');
 			$menu_navigation.removeClass('speed-in');
-			//TODO refade the chat button back in?
+			isChatOpen = false;
 		}
 	});
 
 	$(document).keyup(function(e) {
-  	if (e.keyCode === 13) { //enter key
-			//TODO add chat input sent
-		}
   	if (e.keyCode === 27) { //esc key
 			$shadow_layer.click();
 		}
@@ -92,6 +92,8 @@ jQuery(document).ready(function($) {
 			$('body').removeClass('overflow-hidden');
 		}
 	});
+
+	window.isChatOpen = isChatOpen;
 });
 
 function togglePaneVisibility($lateral_panel, $background_layer, $body) {
